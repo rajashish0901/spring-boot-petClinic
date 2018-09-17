@@ -4,7 +4,7 @@
 
     <groupId>springboot-example</groupId>
     <artifactId>spring-petclinic</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <modules>
         <module>pet-clinic-data</module>
@@ -49,6 +49,6 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/rajashish0901/spring-boot-petclinic.git</developerConnection>
-        <tag>spring-petclinic-0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 </project>
