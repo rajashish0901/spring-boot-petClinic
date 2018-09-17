@@ -1,8 +1,11 @@
 package petclinic.model;
 
+import com.sun.xml.internal.rngom.parse.host.Base;
+import petclinic.services.BaseEntity;
+
 import java.time.LocalDate;
 
-public class Pet {
+public class Pet extends BaseEntity {
     private Owner owner;
     private PetType type;
     private LocalDate birthdate;
