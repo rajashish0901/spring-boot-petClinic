@@ -1,4 +1,4 @@
-package springbootexample.springpetclinic.model;
+package petclinic.model;
 
 public class Person {
     private String firstName, lastName;
