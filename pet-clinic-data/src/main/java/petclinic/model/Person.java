@@ -1,6 +1,8 @@
 package petclinic.model;
 
-public class Person {
+import petclinic.services.BaseEntity;
+
+public class Person extends BaseEntity {
     private String firstName, lastName;
 
     public String getFirstName() {
