@@ -16,10 +16,16 @@ public class DataLoader implements CommandLineRunner {
     OwnerService m_ownerService;
     VetService   m_vetService;
 
-    DataLoader(){
+    DataLoader(OwnerServiceMap ownerServiceMap,VetServiceMap vetServiceMap){
         System.out.println("@@ DataLoader::Const(args) @@");
-        m_ownerService = new OwnerServiceMap();
-        m_vetService = new VetServiceMap();
+
+        //Approach#1
+        //m_ownerService = new OwnerServiceMap();
+        //m_vetService = new VetServiceMap();
+
+        //Approach#2// Define the module as Spring Bean so that it can be initialized during the app startup.
+        m_ownerService = ownerServiceMap;
+        m_vetService = vetServiceMap;
     }
 
     @Override
