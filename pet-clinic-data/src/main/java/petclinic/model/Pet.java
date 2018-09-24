@@ -1,6 +1,5 @@
 package petclinic.model;
 
-import com.sun.xml.internal.rngom.parse.host.Base;
 import petclinic.services.BaseEntity;
 
 import java.time.LocalDate;
