@@ -3,12 +3,10 @@ package petclinic.bootstrap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import petclinic.model.Owner;
-import petclinic.model.Pet;
-import petclinic.model.PetType;
-import petclinic.model.Vet;
+import petclinic.model.*;
 import petclinic.services.OwnerService;
 import petclinic.services.PetTypeService;
+import petclinic.services.SpecialityService;
 import petclinic.services.VetService;
 import petclinic.services.map.OwnerServiceMap;
 import petclinic.services.map.VetServiceMap;
@@ -21,6 +19,7 @@ public class DataLoader implements CommandLineRunner {
     OwnerService m_ownerService;
     VetService   m_vetService;
     PetTypeService m_petTypeService;
+    SpecialityService m_specialityService;
 
     DataLoader(OwnerServiceMap ownerServiceMap,VetServiceMap vetServiceMap,PetTypeService petTypeService){
         System.out.println("@@ DataLoader::Const(args) @@");
@@ -53,18 +52,17 @@ public class DataLoader implements CommandLineRunner {
         cat.setName("Cat");
         PetType savedCatPetType = m_petTypeService.save(cat);
 
-        /*
         Speciality radiology = new Speciality();
         radiology.setDescription("Radiology");
-        Speciality savedRadiology = specialtyService.save(radiology);
+        Speciality savedRadiology = m_specialityService.save(radiology);
 
         Speciality surgery = new Speciality();
         surgery.setDescription("Surgery");
-        Speciality savedSurgery = specialtyService.save(surgery);
+        Speciality savedSurgery = m_specialityService.save(surgery);
 
         Speciality dentistry = new Speciality();
         dentistry.setDescription("dentistry");
-        Speciality savedDentistry = specialtyService.save(dentistry);*/
+        Speciality savedDentistry = m_specialityService.save(dentistry);
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
@@ -111,14 +109,14 @@ public class DataLoader implements CommandLineRunner {
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
-       //vet1.getSpecialities().add(savedRadiology);
+       vet1.getSpecialities().add(savedRadiology);
 
         m_vetService.save(vet1);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Jessie");
         vet2.setLastName("Porter");
-        //vet2.getSpecialities().add(savedSurgery);
+        vet2.getSpecialities().add(savedSurgery);
 
         m_vetService.save(vet2);
 
