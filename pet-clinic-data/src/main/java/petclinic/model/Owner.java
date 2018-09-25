@@ -1,5 +1,6 @@
 package petclinic.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Owner extends Person {
@@ -7,7 +8,7 @@ public class Owner extends Person {
     private String telephone;
     private String city;
 
-    Set<Pet> m_pet;
+    Set<Pet> pet = new HashSet<>();
 
     public String getAddress() {
         return address;
@@ -33,11 +34,11 @@ public class Owner extends Person {
         this.city = city;
     }
 
-    public Set<Pet> getM_pet() {
-        return m_pet;
+    public Set<Pet> getPets() {
+        return pet;
     }
 
-    public void setM_pet(Set<Pet> m_pet) {
-        this.m_pet = m_pet;
+    public void setPets(Set<Pet> pet) {
+        this.pet = pet;
     }
 }

@@ -4,19 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import petclinic.model.Owner;
+import petclinic.model.Pet;
+import petclinic.model.PetType;
 import petclinic.model.Vet;
 import petclinic.services.OwnerService;
+import petclinic.services.PetTypeService;
 import petclinic.services.VetService;
 import petclinic.services.map.OwnerServiceMap;
 import petclinic.services.map.VetServiceMap;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
     OwnerService m_ownerService;
     VetService   m_vetService;
+    PetTypeService m_petTypeService;
 
-    DataLoader(OwnerServiceMap ownerServiceMap,VetServiceMap vetServiceMap){
+    DataLoader(OwnerServiceMap ownerServiceMap,VetServiceMap vetServiceMap,PetTypeService petTypeService){
         System.out.println("@@ DataLoader::Const(args) @@");
 
         //Approach#1
@@ -26,6 +32,7 @@ public class DataLoader implements CommandLineRunner {
         //Approach#2// Define the module as Spring Bean so that it can be initialized during the app startup.
         m_ownerService = ownerServiceMap;
         m_vetService = vetServiceMap;
+        m_petTypeService = petTypeService;
     }
 
     @Override
@@ -37,16 +44,16 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("@@ DataLoader::loadData(...) @@");
 
-        /*
+
         PetType dog = new PetType();
         dog.setName("Dog");
-        PetType savedDogPetType = petTypeService.save(dog);
+        PetType savedDogPetType = m_petTypeService.save(dog);
 
         PetType cat = new PetType();
         cat.setName("Cat");
-        PetType savedCatPetType = petTypeService.save(cat);
+        PetType savedCatPetType = m_petTypeService.save(cat);
 
-
+        /*
         Speciality radiology = new Speciality();
         radiology.setDescription("Radiology");
         Speciality savedRadiology = specialtyService.save(radiology);
@@ -63,7 +70,7 @@ public class DataLoader implements CommandLineRunner {
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
 
-        /* owner1.setAddress("123 Brickerel");
+        owner1.setAddress("123 Brickerel");
         owner1.setCity("Miami");
         owner1.setTelephone("1231231234");
 
@@ -72,7 +79,7 @@ public class DataLoader implements CommandLineRunner {
         mikesPet.setOwner(owner1);
         mikesPet.setBirthDate(LocalDate.now());
         mikesPet.setName("Rosco");
-        owner1.getPets().add(mikesPet);*/
+        owner1.getPets().add(mikesPet);
 
         m_ownerService.save(owner1);
 
@@ -80,7 +87,7 @@ public class DataLoader implements CommandLineRunner {
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
 
-        /*owner2.setAddress("123 Brickerel");
+        owner2.setAddress("123 Brickerel");
         owner2.setCity("Miami");
         owner2.setTelephone("1231231234");
 
@@ -89,7 +96,7 @@ public class DataLoader implements CommandLineRunner {
         fionasCat.setOwner(owner2);
         fionasCat.setBirthDate(LocalDate.now());
         fionasCat.setPetType(savedCatPetType);
-        owner2.getPets().add(fionasCat);*/
+        owner2.getPets().add(fionasCat);
 
         m_ownerService.save(owner2);
 
