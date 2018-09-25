@@ -5,6 +5,6 @@ import petclinic.model.Pet;
 
 import java.util.Set;
 
-public interface PerService extends CRUDService <Pet,Long>{
+public interface PetService extends CRUDService <Pet,Long>{
 
 }
