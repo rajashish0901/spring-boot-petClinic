@@ -21,7 +21,8 @@ public class DataLoader implements CommandLineRunner {
     PetTypeService m_petTypeService;
     SpecialityService m_specialityService;
 
-    DataLoader(OwnerServiceMap ownerServiceMap,VetServiceMap vetServiceMap,PetTypeService petTypeService){
+    DataLoader(OwnerServiceMap ownerServiceMap,VetServiceMap vetServiceMap,PetTypeService petTypeService,
+               SpecialityService specialityService){
         System.out.println("@@ DataLoader::Const(args) @@");
 
         //Approach#1
@@ -32,6 +33,7 @@ public class DataLoader implements CommandLineRunner {
         m_ownerService = ownerServiceMap;
         m_vetService = vetServiceMap;
         m_petTypeService = petTypeService;
+        m_specialityService = specialityService;
     }
 
     @Override
