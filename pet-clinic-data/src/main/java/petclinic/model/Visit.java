@@ -1,7 +1,5 @@
 package petclinic.model;
 
-import petclinic.services.BaseEntity;
-
 import java.time.LocalDate;
 
 public class Visit extends BaseEntity {

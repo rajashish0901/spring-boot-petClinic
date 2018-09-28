@@ -1,11 +1,17 @@
 package petclinic.model;
 
-import petclinic.services.BaseEntity;
-
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "pet")
 public class Pet extends BaseEntity {
+
+    @ManyToOne
     private Owner owner;
+    @ManyToOne
     private PetType petType;
     private LocalDate birthDate;
     private String name;
