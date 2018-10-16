@@ -2,6 +2,7 @@ package petclinic.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -9,9 +10,19 @@ import java.util.Set;
 public class Pet extends BaseEntity {
 
     @ManyToOne
+    @JoinColumn(name = "owner_id")
     private Owner owner;
+
     @ManyToOne
+    @JoinColumn(name = "type_id")
     private PetType petType;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "pet")
+    private Set<Visit> visits = new HashSet<>();
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
+    @Column(name = "name")
+    private String name;
 
     public Set<Visit> getVisits() {
         return visits;
@@ -20,13 +31,6 @@ public class Pet extends BaseEntity {
     public void setVisits(Set<Visit> visits) {
         this.visits = visits;
     }
-
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "pet")
-    Set<Visit> visits;
-    @Column(name = "birth_date")
-    private LocalDate birthDate;
-    @Column(name = "name")
-    private String name;
 
     public String getName() {
         return name;
